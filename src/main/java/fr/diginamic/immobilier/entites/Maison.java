@@ -20,7 +20,9 @@ public class Maison {
 	 * @param nvPiece nouvelle pièce à ajouter
 	 */
 	public void ajouterPiece(Piece nvPiece) {
-		
+		if(nvPiece == null) {
+			return;
+		}
 		// On est obligé d'agrandir le tableau initial de 1 à chaque ajout
 		// d'une nouvelle pièce
 		
@@ -53,7 +55,7 @@ public class Maison {
 		double superficieEtage = 0;
 
 		for (int i = 0; i < pieces.length; i++) {
-			if (choixEtage == this.pieces[i].getNumEtage()) {
+			if (pieces[i]!=null && choixEtage == this.pieces[i].getNumEtage()) {
 				superficieEtage = this.pieces[i].getSuperficie();
 			}
 		}
@@ -68,8 +70,8 @@ public class Maison {
 	public double superficieTypePiece(String typePiece) {
 		double superficie = 0;
 
-		for (int i = 1; i < pieces.length; i++) {
-			if (typePiece!=null && typePiece.equals(this.pieces[i].getType())) {
+		for (int i = 0; i < pieces.length; i++) {
+			if (pieces[i]!=null && typePiece!=null && typePiece.equals(this.pieces[i].getType())) {
 				superficie = superficie + this.pieces[i].getSuperficie();
 			}
 		}
@@ -84,7 +86,9 @@ public class Maison {
 		double superficieTot = 0;
 
 		for (int i = 0; i < pieces.length; i++) {
-			superficieTot = superficieTot + this.pieces[i].getSuperficie();
+			if(pieces[i]!=null) {
+				superficieTot = superficieTot + this.pieces[i].getSuperficie();
+			}
 		}
 
 		return superficieTot;

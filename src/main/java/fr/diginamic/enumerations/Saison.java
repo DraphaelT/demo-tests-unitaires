@@ -38,9 +38,6 @@ public enum Saison {
 			if (libelle.equals(saison.getLibelle())) {
 				return saison;
 			}
-			else {
-				return null;
-			}
 		}
 		return null;
 	}
